@@ -1,0 +1,7 @@
+我是在window上运行的
+python------3.6.1
+django------2.0.5
+数据库运用的MySQL
+分页用的第三方插件-------->pagination
+安装命令：在window是    pip install django-pure-pagination
+	在Ubuntu是     sudo pip install django-pure-pagination

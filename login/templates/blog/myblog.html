@@ -1,0 +1,40 @@
+{% extends 'login/base.html' %}
+{% block title %}主页{% endblock %}
+{% block content %}
+    {% if request.session.is_login %}
+    {% for article in article_list %}
+    <div style="margin-left:10%;">
+        <h2><a href="{% url 'blogs:article' article.id %}">{{ article.title }}</a></h2>
+        <p>{{ article.pub_time }}</p>
+        <p>{{ article.content }}</p>
+       
+    </div>
+    {% endfor %}
+
+    <!-- 分页 -->
+    <div class="pageturn">
+        <ul class="pagelist">
+            {% if article_list.has_previous %}
+                <li class="long"><a href="?{{ article_list.previous_page_number.querystring }}">上一页</a></li>
+            {% endif %}
+    
+            {% for page in article_list.pages %}
+                {% if page %}
+                    {% ifequal page article_list.number %}
+                        <li class="active"><a href="?{{ page.querystring }}">{{ page }}</a></li>
+                    {% else %}
+                        <li><a href="?{{ page.querystring }}" class="page">{{ page }}</a></li>
+                    {% endifequal %}
+                {% else %}
+                    <li class="none"><a href="">...</a></li>
+                {% endif %}
+            {% endfor %}
+            {% if article_list.has_next %}
+                <li class="long"><a href="?{{ article_list.next_page_number.querystring }}">下一页</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    
+
+    {% endif %}
+{% endblock %}

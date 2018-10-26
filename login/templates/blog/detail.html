@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}博客详情页{% endblock %}
+
+{% block content %}
+    <!-- 博客{{ blog_id }}的详情页 -->
+    {% for post in blog_list %}
+    <div style="margin-left:10%;">
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.pub_time }}</p>
+        <p>{{ post.content }}</p>
+    </div>
+    
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'login/base.html' %}
+
+{% block title %}个人详情{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="col-md-4 col-md-offset-4">
+          <form class='form-register' action="/xiugai/" method="post">
+
+              {% if message %}
+                  <div class="alert alert-warning">{{ message }}</div>
+              {% endif %}
+
+              {% csrf_token %}
+
+              <h2 class="text-center">个人详情</h2>
+              <div class="form-group">
+                  {{ register_form.username.label_tag }}
+                  <pre>{{ ren_user.name }}</pre>
+              </div>
+              <div class="form-group">
+                  {{ register_form.password1.label_tag }}
+                  <pre>{{ ren_user.password }}</pre>
+              </div>
+              <div class="form-group">
+                  {{ register_form.email.label_tag }}
+                  <pre>{{ ren_user.email }}</pre>
+              </div>
+              
+
+              <a href="/blog/"><span class="btn btn-primary pull-left">返回</span></a>
+              <a href="/xiugai/"><button type="submit" class="btn btn-primary pull-right">修改</button></a>
+
+          </form>
+        </div>
+    </div> <!-- /container -->
+{% endblock %}
